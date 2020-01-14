@@ -1,0 +1,6 @@
+.settings/
+KML_Output/
+.project
+bin/
+input/
+.classpath
