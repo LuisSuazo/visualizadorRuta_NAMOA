@@ -257,7 +257,7 @@ public class Escritura {
 		}catch(IOException e) { e.printStackTrace(); }
 	}
 
-	public void RutaKML(HashMap<Integer,ArrayList<Nodo>> Ruta,HashMap<String,Calle> Mapa,HashMap<Integer,Integer> RutasMalas) {
+	public void RutaKML(HashMap<Integer,ArrayList<Nodo>> Ruta,HashMap<String,Calle> Mapa,boolean rr) {
 		File folder = new File( "KML_Output" );
 		FileWriter fichero = null;
 
@@ -265,8 +265,12 @@ public class Escritura {
 		if( !folder.exists() ){
 			folder.mkdir();
 		}
+		String rname = "Rutas";
+		if(rr) {
+			rname = "RutasRepresentativas";
+		}
 		try {
-			fichero = new FileWriter("KML_Output/"+"Rutas"+".kml"); /// Escribe el KML con el nombre de la comuna
+			fichero = new FileWriter("KML_Output/"+rname+".kml"); /// Escribe el KML con el nombre de la comuna
 			pw = new PrintWriter(fichero);
 			pw.println( "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n" +
 					"<kml xmlns=\"http://www.opengis.net/kml/2.2\">\n" +
@@ -306,7 +310,6 @@ public class Escritura {
 					"\t\t\t"+"<name>Rutas</name>" );
 			for (Entry<Integer,ArrayList<Nodo>> it : Ruta.entrySet()) {
 				String nombre="";
-				if(RutasMalas.containsKey(it.getKey())) nombre="_"+String.valueOf(it.getKey())+","+String.valueOf(RutasMalas.get(it.getKey()));
 				pw.println( "\t\t"+"<Folder>\n" +  
 						"\t\t\t"+"<name>"+it.getKey()+nombre+"</name>" );
 				for(int i=1;i<it.getValue().size();++i) {

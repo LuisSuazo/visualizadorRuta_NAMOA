@@ -14,9 +14,23 @@ import kml.estructuras.Nodo;
 import kml.funciones.Funciones;
 
 public class Lectura {
+	
 	Funciones Funciones = new Funciones();
+	
+	private String redExpuesta;
+	private String rutas;
+	private String rutasRepresentativas;
+	private String puntosRiesgo;
+	
+	public Lectura(String redExpuesta, String rutas, String rutasRepresentativas, String puntosRiesgo) {
+		this.redExpuesta = redExpuesta;
+		this.rutas = rutas;
+		this.rutasRepresentativas = rutasRepresentativas;
+		this.puntosRiesgo = puntosRiesgo;
+	}
+	
 	public void leerCalles(ArrayList<Calle> Calles,HashMap<Integer,Nodo> Puntos,HashMap<String,Calle> Mapa) throws FileNotFoundException, IOException{
-		CsvReader archivo = new CsvReader("input/RedExpuesta.csv");
+		CsvReader archivo = new CsvReader(this.redExpuesta);
 		archivo.setDelimiter( ';' );
 		archivo.readHeaders( );
 		while( archivo.readRecord( ) ){
@@ -49,9 +63,14 @@ public class Lectura {
 		}
 		
 	}
-	
-	public void leerRuta(HashMap<Integer,Nodo> Puntos,HashMap<Integer,ArrayList<Nodo>> Ruta,HashMap<Integer,Integer> RutasMalas) throws FileNotFoundException, IOException{
-		CsvReader archivo = new CsvReader("input/Rutas_Bronfman_NAMOA_3O_S_54602_G_23561_nSOL_2491_Rutas_Representativas.csv");
+
+	public void leerRuta(HashMap<Integer,Nodo> Puntos,HashMap<Integer,ArrayList<Nodo>> Ruta,boolean rr) throws FileNotFoundException, IOException{
+		CsvReader archivo = null;
+		if(rr) {
+			archivo = new CsvReader(this.rutas);
+		}else {
+			archivo = new CsvReader(this.rutasRepresentativas);
+		}
 		archivo.setDelimiter( ';' );
 		int cont=0;
 		while( archivo.readRecord( ) ){
@@ -64,8 +83,10 @@ public class Lectura {
 		}
 	}
 	
+	
+	
 	public void leerPuntosRiesgo(List<Nodo> puntosRiesgo,List<Circulo> circulos) throws IOException {
-		CsvReader archivo = new CsvReader("input/PuntosRiesgos.csv");
+		CsvReader archivo = new CsvReader(this.puntosRiesgo);
 		archivo.setDelimiter( ';' );
 		archivo.readHeaders( );
 		while( archivo.readRecord( ) ){

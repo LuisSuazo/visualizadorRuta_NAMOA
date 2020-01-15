@@ -54,6 +54,7 @@
     </target>
     <target name="run">
         <java classname="kml.Driver" failonerror="true" fork="yes">
+            <arg line="input/RedExpuesta.csv input/Rutas_Bronfman_NAMOA_3O_S_561634_G_62001_nSOL_215.csv input/Rutas_Bronfman_NAMOA_3O_S_561634_G_62001_nSOL_215_Rutas_Representativas.csv input/PuntosRiesgos.csv"/>
             <classpath refid="KML.classpath"/>
         </java>
     </target>
