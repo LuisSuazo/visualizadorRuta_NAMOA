@@ -1,4 +1,4 @@
-package KML;
+package kml.io;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -7,6 +7,11 @@ import java.util.HashMap;
 import java.util.List;
 
 import com.csvreader.CsvReader;
+
+import kml.estructuras.Calle;
+import kml.estructuras.Circulo;
+import kml.estructuras.Nodo;
+import kml.funciones.Funciones;
 
 public class Lectura {
 	Funciones Funciones = new Funciones();

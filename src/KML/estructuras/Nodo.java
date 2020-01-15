@@ -1,4 +1,4 @@
-package KML;
+package kml.estructuras;
 
 public class Nodo {
 	private final Integer id;

@@ -1,4 +1,4 @@
-package KML;
+package kml.estructuras;
 
 import java.util.ArrayList;
 import java.util.List;

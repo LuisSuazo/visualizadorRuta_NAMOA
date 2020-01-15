@@ -1,4 +1,4 @@
-package KML;
+package kml.io;
 
 import java.awt.Color;
 import java.io.File;
@@ -7,10 +7,15 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map.Entry;
+
+import kml.estructuras.Calle;
+import kml.estructuras.Circulo;
+import kml.estructuras.Nodo;
+
 import java.util.Random;
+
 
 public class Escritura {
 	public void GrafoKML(ArrayList<Calle> Calles) {
@@ -133,7 +138,7 @@ public class Escritura {
 			puntosRiesgo.forEach(it -> {
 				pw.flush();	
 				pw.println("<Folder>\r\n" + 
-						"			<name>Carpeta sin título</name>\r\n" + 
+						"			<name>Nodos</name>\r\n" + 
 						"			<visibility>0</visibility>\r\n"); 
 				pw.println("<Placemark>\r\n" + 
 						"		<name>"+it.getCentro().getId()+"</name>\r\n"+
@@ -152,13 +157,13 @@ public class Escritura {
 						"		</Point>\r\n" + 
 						"	</Placemark>");
 				pw.println("<Folder>\r\n" + 
-						"				<name>Carpeta sin título</name>\r\n" + 
+						"				<name>Radio</name>\r\n" + 
 						"\t\t\t\t"+"<styleUrl>#failed</styleUrl>"+
 						"				<open>1</open>\r\n" + 
 						"			<visibility>0</visibility>\r\n" +
 						"				<Placemark>\r\n" + 
 						"			<visibility>0</visibility>\r\n" +
-						"					<name>Polígono sin título</name>\r\n" + 
+						"					<name>"+it.getCentro().getId()+"</name>\r\n" + 
 						"					<styleUrl>#failed1</styleUrl>\r\n" + 
 						"					<Polygon>\r\n" + 
 						"						<tessellate>1</tessellate>\r\n" + 

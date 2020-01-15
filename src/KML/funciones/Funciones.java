@@ -1,4 +1,4 @@
-package KML;
+package kml.funciones;
 
 import java.util.ArrayList;
 import geotransform.coords.Gdc_Coord_3d;
