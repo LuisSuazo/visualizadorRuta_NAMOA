@@ -13,7 +13,7 @@ import kml.io.Lectura;
 
 public class Driver {
 	public static void main(String args[]) throws FileNotFoundException, IOException {
-		if(args.length<4) {
+		if(args.length<5) {
 			System.out.println("Argumentos insuficientes");
 			return;
 		}
@@ -32,8 +32,8 @@ public class Driver {
 		lectura.leerPuntosRiesgo(puntosRiesgo,circulos);
 		escribir.GrafoKML(Calles);
 		escribir.NodosKML(Puntos);
-		escribir.RutaKML(Ruta,Mapa,false);
-		escribir.RutaKML(RutaRepresentativa,Mapa,true);
+		//escribir.RutaKML(Ruta,Mapa,false,args[4]);
+		escribir.RutaKML(RutaRepresentativa,Mapa,true,args[4]);
 		escribir.NodosRiesgoKML(circulos);
 	}
 }

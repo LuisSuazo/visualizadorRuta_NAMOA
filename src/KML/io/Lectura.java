@@ -91,7 +91,7 @@ public class Lectura {
 		archivo.readHeaders( );
 		while( archivo.readRecord( ) ){
 			double lat_lon[] = Funciones.conv_gdc(Double.valueOf(archivo.get(3)),Double.valueOf(archivo.get(4)));
-			Nodo aux = new Nodo(archivo.get(1),archivo.get(2),lat_lon[0],lat_lon[1]);
+			Nodo aux = new Nodo(archivo.get(0),archivo.get(2),lat_lon[0],lat_lon[1]);
 			puntosRiesgo.add(aux);
 			Circulo auxCirculo = new Circulo(aux);
 			circulos.add(auxCirculo);

@@ -13,7 +13,7 @@ public class Circulo {
 		a[1]=5;
 		double centerLat = (Centro.getX()* Math.PI) / 180.0;  //rad
 		double centerLng = (Centro.getY()* Math.PI) / 180.0; //rad        
-		double diameter = 0.8; // diameter of circle in km
+		double diameter = 1; // diameter of circle in km
 		double dist = diameter / 6371.0; 
 		double lan;
 		for (int x = 0; x <= 360; x += 1){
