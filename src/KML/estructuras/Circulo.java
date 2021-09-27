@@ -6,13 +6,13 @@ import java.util.List;
 public class Circulo {
 	
 	private List<Nodo> puntos = new ArrayList<>();
-	private Nodo Centro;
+	private Nodo centro;
 	
-	public Circulo(Nodo Centro) {
+	public Circulo(Nodo centro) {
 		int[] a = new int[10];
 		a[1]=5;
-		double centerLat = (Centro.getX()* Math.PI) / 180.0;  //rad
-		double centerLng = (Centro.getY()* Math.PI) / 180.0; //rad        
+		double centerLat = (centro.getX()* Math.PI) / 180.0;  //rad
+		double centerLng = (centro.getY()* Math.PI) / 180.0; //rad        
 		double diameter = 1; // diameter of circle in km
 		double dist = diameter / 6371.0; 
 		double lan;
@@ -25,15 +25,15 @@ public class Circulo {
 			Nodo aux = new Nodo(lan,longitude);
 			puntos.add(aux);
 		}
-		this.Centro=Centro;
+		this.centro=centro;
 	}
 
 	public Nodo getCentro() {
-		return Centro;
+		return centro;
 	}
 
 	public void setCentro(Nodo centro) {
-		Centro = centro;
+		this.centro = centro;
 	}
 	
 	public List<Nodo> getPuntos() {

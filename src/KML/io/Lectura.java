@@ -3,7 +3,8 @@ package kml.io;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.List;
 
 import com.csvreader.CsvReader;
@@ -15,7 +16,7 @@ import kml.funciones.Funciones;
 
 public class Lectura {
 	
-	Funciones Funciones = new Funciones();
+	Funciones funciones = new Funciones();
 	
 	private String redExpuesta;
 	private String rutas;
@@ -29,7 +30,7 @@ public class Lectura {
 		this.puntosRiesgo = puntosRiesgo;
 	}
 	
-	public void leerCalles(ArrayList<Calle> Calles,HashMap<Integer,Nodo> Puntos,HashMap<String,Calle> Mapa) throws FileNotFoundException, IOException{
+	public void leerCalles(List<Calle> calles,Map<Integer,Nodo> puntos,Map<String,Calle> mapa) throws FileNotFoundException, IOException{
 		CsvReader archivo = new CsvReader(this.redExpuesta);
 		archivo.setDelimiter( ';' );
 		archivo.readHeaders( );
@@ -45,26 +46,26 @@ public class Lectura {
 			double riesgo1000=Double.parseDouble(archivo.get(8));
 			int nodoA=Integer.parseInt(archivo.get(9));	
 			int nodoB=Integer.parseInt(archivo.get(10));
-			String AB=archivo.get(11);
+			String ab=archivo.get(11);
 			double aX=Double.parseDouble(archivo.get(12));
 			double aY=Double.parseDouble(archivo.get(13));
 			double bX=Double.parseDouble(archivo.get(14));
 			double bY=Double.parseDouble(archivo.get(15));
-			double lat_lonA[] = Funciones.conv_gdc(aX,aY);
-			double lat_lonB[] = Funciones.conv_gdc(bX,bY);
+			double latLonA[] = funciones.conv_gdc(aX,aY);
+			double latLonB[] = funciones.conv_gdc(bX,bY);
 			Calle aux=new Calle(idArco,longitud,velocidad,tiempo,probabilidad,pobExpuesta800,
 					pobExpuesta1000,riesgo800,riesgo1000,nodoA,nodoB,aX,aY,bX,bY,
-					lat_lonA[0],lat_lonA[1],lat_lonB[0],lat_lonB[1]);
-			Calles.add(aux);
-			Mapa.put(AB,aux);
-			Puntos.put(nodoA,new Nodo(nodoA,lat_lonA[0],lat_lonA[1]));
-			Puntos.put(nodoB,new Nodo(nodoB,lat_lonB[0],lat_lonB[1]));
+					latLonA[0],latLonA[1],latLonB[0],latLonB[1]);
+			calles.add(aux);
+			mapa.put(ab,aux);
+			puntos.put(nodoA,new Nodo(nodoA,latLonA[0],latLonA[1]));
+			puntos.put(nodoB,new Nodo(nodoB,latLonB[0],latLonB[1]));
 			
 		}
 		
 	}
 
-	public void leerRuta(HashMap<Integer,Nodo> Puntos,HashMap<Integer,ArrayList<Nodo>> Ruta,boolean rr) throws FileNotFoundException, IOException{
+	public void leerRuta(Map<Integer,Nodo> puntos,Map<Integer,List<Nodo>> ruta,boolean rr) throws FileNotFoundException, IOException{
 		CsvReader archivo = null;
 		if(rr) {
 			archivo = new CsvReader(this.rutas);
@@ -74,11 +75,11 @@ public class Lectura {
 		archivo.setDelimiter( ';' );
 		int cont=0;
 		while( archivo.readRecord( ) ){
-			ArrayList<Nodo> aux=new ArrayList<Nodo>();
+			List<Nodo> aux=new ArrayList<>();
 			for(String it: archivo.getValues()) {
-				aux.add(Puntos.get(Integer.parseInt(it)));
+				aux.add(puntos.get(Integer.parseInt(it)));
 			}
-			Ruta.put(cont,aux);
+			ruta.put(cont,aux);
 			cont++;
 		}
 	}
@@ -90,8 +91,8 @@ public class Lectura {
 		archivo.setDelimiter( ';' );
 		archivo.readHeaders( );
 		while( archivo.readRecord( ) ){
-			double lat_lon[] = Funciones.conv_gdc(Double.valueOf(archivo.get(3)),Double.valueOf(archivo.get(4)));
-			Nodo aux = new Nodo(archivo.get(0),archivo.get(2),lat_lon[0],lat_lon[1]);
+			double latLon[] = funciones.conv_gdc(Double.valueOf(archivo.get(3)),Double.valueOf(archivo.get(4)));
+			Nodo aux = new Nodo(archivo.get(0),archivo.get(2),latLon[0],latLon[1]);
 			puntosRiesgo.add(aux);
 			Circulo auxCirculo = new Circulo(aux);
 			circulos.add(auxCirculo);

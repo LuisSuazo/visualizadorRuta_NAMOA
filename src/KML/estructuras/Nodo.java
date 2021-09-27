@@ -4,27 +4,27 @@ public class Nodo {
 	private final Integer id;
 	private final Double x;
 	private final Double y;
-	private final Integer Demanda;
+	private final Integer demanda;
 	
 	public Nodo(Integer id,Double x, Double y) {
 		this.id=id;
 		this.x = x;
 		this.y = y;
-		this.Demanda=0;
+		this.demanda=0;
 	}
 	
 	public Nodo(Double x, Double y) {
 		this.id = 0;
 		this.x = x;
 		this.y = y;
-		this.Demanda = 0;
+		this.demanda = 0;
 	}
 	
-	public Nodo(String id,String Demanda,Double x, Double y) {
+	public Nodo(String id,String demanda,Double x, Double y) {
 		this.id = Integer.valueOf(id);
 		this.x = x;
 		this.y = y;
-		this.Demanda = Integer.valueOf(Demanda);
+		this.demanda = Integer.valueOf(demanda);
 	}
 
 	public Double getX() {
@@ -40,7 +40,7 @@ public class Nodo {
 	}
 	
 	public Integer getDemanda() {
-		return Demanda;
+		return demanda;
 	}	
 	
 	@Override

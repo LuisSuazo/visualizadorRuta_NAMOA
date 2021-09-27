@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.List;
 import java.util.Map.Entry;
 
@@ -17,7 +18,8 @@ import kml.estructuras.Nodo;
 import java.util.Random;
 
 public class Escritura {
-	public void GrafoKML(ArrayList<Calle> Calles) {
+	
+	public void grafoKML(List<Calle> calles) {
 		File folder = new File("KML_Output");
 		FileWriter fichero = null;
 
@@ -39,7 +41,7 @@ public class Escritura {
 					+ "<SimpleField name=\"PobExp1000\" type=\"double\"></SimpleField>\n" + "\t\t\t"
 					+ "<SimpleField name=\"Riesgo800\" type=\"double\"></SimpleField>\n" + "\t\t\t"
 					+ "<SimpleField name=\"Riesgo1000\" type=\"double\"></SimpleField>\n" + "\t\t" + "</Schema>");
-			// EscribirStyleKML(pw,MMPuntos.size());
+			// escribirStyleKMLCallesColorRandom(pw,MMPuntos.size());
 			pw.println("<Style id=\"sn_ylw-pushpin\">\r\n" + "		<BalloonStyle>\r\n" + "		</BalloonStyle>\r\n"
 					+ "		<LineStyle>\r\n" + "			<color>ff00ffff</color>\r\n"
 					+ "			<width>3</width>\r\n" + "		</LineStyle>\r\n" + "	</Style>\r\n"
@@ -52,8 +54,8 @@ public class Escritura {
 					+ "			<key>highlight</key>\r\n" + "			<styleUrl>#sh_ylw-pushpin</styleUrl>\r\n"
 					+ "		</Pair>\r\n" + "	</StyleMap>");
 
-			pw.println("\t\t" + "<Folder>\n" + "\t\t\t" + "<name>Calles</name>");
-			for (Calle aux : Calles) {
+			pw.println("\t\t" + "<Folder>\n" + "\t\t\t" + "<name>calles</name>");
+			for (Calle aux : calles) {
 				pw.print("\t\t\t" + "<Placemark>\n" + "\t\t\t\t" + "<name>" + aux.getIdArco() + "</name>\n" + "\t\t\t\t"
 						+ "<styleUrl>#msn_ylw-pushpin</styleUrl>" + "\t\t\t\t" + "<visibility>0</visibility>\n"
 						+ "\t\t\t\t" + "<ExtendedData><SchemaData schemaUrl=\"PuntosMM\">\n" + "\t\t\t\t"
@@ -110,7 +112,7 @@ public class Escritura {
 		pw.println("\t\t" + "</Folder>\n");
 	}
 
-	public void NodosRiesgoKML(List<Circulo> puntosRiesgo) {
+	public void nodosRiesgoKML(List<Circulo> puntosRiesgo) {
 		File folder = new File("KML_Output");
 		FileWriter fichero = null;
 		try {
@@ -155,7 +157,7 @@ public class Escritura {
 		}
 	}
 
-	public void NodosRiesgoCSV(List<Nodo> puntosRiesgo) {
+	public void nodosRiesgoCSV(List<Nodo> puntosRiesgo) {
 		File folder = new File("KML_Output");
 		FileWriter fichero = null;
 		try {
@@ -179,7 +181,7 @@ public class Escritura {
 		}
 	}
 
-	public void NodosKML(HashMap<Integer, Nodo> Puntos) {
+	public void nodosKML(Map<Integer, Nodo> puntos) {
 		File folder = new File("KML_Output");
 		FileWriter fichero = null;
 
@@ -197,7 +199,7 @@ public class Escritura {
 					+ "<SimpleField name=\"x\" type=\"double\"></SimpleField>\n" + "\t\t\t"
 					+ "<SimpleField name=\"y\" type=\"double\"></SimpleField>\n" + "\t\t" + "</Schema>");
 			pw.println("\t\t" + "<Folder>\n" + "\t\t\t" + "<name>Nodos</name>");
-			for (Entry<Integer, Nodo> aux : Puntos.entrySet()) {
+			for (Entry<Integer, Nodo> aux : puntos.entrySet()) {
 				pw.println("<Placemark>\r\n" + "		<name>" + aux.getValue().getId() + "</name>\r\n"
 						+ "<visibility>0</visibility>" + "		<Point>\r\n"
 						+ "			<gx:drawOrder>1</gx:drawOrder>\r\n" + "			<coordinates>"
@@ -215,7 +217,7 @@ public class Escritura {
 		}
 	}
 
-	public void RutaKML(HashMap<Integer, ArrayList<Nodo>> Ruta, HashMap<String, Calle> Mapa, boolean rr,String outname) {
+	public void rutaKML(Map<Integer, List<Nodo>> ruta, Map<String, Calle> mapa, boolean rr,String outname) {
 		File folder = new File("KML_Output");
 		FileWriter fichero = null;
 
@@ -240,9 +242,9 @@ public class Escritura {
 					+ "<SimpleField name=\"PobExp1000\" type=\"double\"></SimpleField>\n" + "\t\t\t"
 					+ "<SimpleField name=\"Riesgo800\" type=\"double\"></SimpleField>\n" + "\t\t\t"
 					+ "<SimpleField name=\"Riesgo1000\" type=\"double\"></SimpleField>\n" + "\t\t" + "</Schema>");
-			EscribirStyleKML(pw, Ruta.size());
+			escribirStyleKMLCalles(pw, ruta.size());
 			pw.println("\t\t" + "<Folder>\n" + "\t\t\t" + "<name>Nodos</name>");
-			for (Entry<Integer, ArrayList<Nodo>> it : Ruta.entrySet()) {
+			for (Entry<Integer, List<Nodo>> it : ruta.entrySet()) {
 				pw.println("\t\t" + "<Folder>\n" + "\t\t\t" + "<name>" + it.getKey() + "</name>");
 				for (Nodo kt : it.getValue()) {
 					pw.println("<Placemark>\r\n" + "		<name>" + kt.getId() + "</name>\r\n"
@@ -255,13 +257,13 @@ public class Escritura {
 			}
 			pw.print("\t\t" + "</Folder>\n");
 			pw.println("\t\t" + "<Folder>\n" + "\t\t\t" + "<name>Rutas</name>");
-			for (Entry<Integer, ArrayList<Nodo>> it : Ruta.entrySet()) {
+			for (Entry<Integer, List<Nodo>> it : ruta.entrySet()) {
 				String nombre = "";
 				pw.println("\t\t" + "<Folder>\n" + "\t\t\t" + "<name>" + it.getKey() + nombre + "</name>");
 				for (int i = 1; i < it.getValue().size(); ++i) {
-					String Consultar = String
+					String consultar = String
 							.valueOf(it.getValue().get(i - 1).getId() + "-" + it.getValue().get(i).getId());
-					Calle aux = Mapa.get(Consultar);
+					Calle aux = mapa.get(consultar);
 					pw.println("<Placemark>\r\n" + "		<name>" + it.getValue().get(i).getId() + "</name>\r\n"
 							+ "<styleUrl>#failed" + it.getKey() + "</styleUrl>" + "\t\t\t\t"
 							+ "<visibility>0</visibility>\n" + "\t\t\t\t"
@@ -295,7 +297,7 @@ public class Escritura {
 		}
 	}
 
-	private void EscribirStyleKML(PrintWriter pw, int numerito) {
+	private void escribirStyleKMLCallesColorRandom(PrintWriter pw, int numerito) {
 
 		Random random = new Random();
 		// System.out.println( "hex: " + Integer.toHexString( c.getRGB() & 0x00ffffff )
@@ -317,6 +319,74 @@ public class Escritura {
 					+ "<Style id=\"failed1" + i + "\">" + "<LineStyle>" + " 	<color>" + aux + "aa</color>"
 					+ "	<width>6</width>" + "</LineStyle>" + "</Style>");
 		}
+	}
+
+	private void escribirStyleKMLCalles(PrintWriter pw, int numerito) {
+
+		pw.println("<StyleMap id=\"failed1\">\r\n"
+				+ "		<Pair>\r\n"
+				+ "			<key>normal</key>\r\n"
+				+ "			<styleUrl>#failed11</styleUrl>\r\n"
+				+ "		</Pair>\r\n"
+				+ "		<Pair>\r\n"
+				+ "			<key>highlight</key>\r\n"
+				+ "			<styleUrl>#failed01</styleUrl>\r\n"
+				+ "		</Pair>\r\n"
+				+ "	</StyleMap>\r\n"
+				+ "	<StyleMap id=\"failed2\">\r\n"
+				+ "		<Pair>\r\n"
+				+ "			<key>normal</key>\r\n"
+				+ "			<styleUrl>#failed12</styleUrl>\r\n"
+				+ "		</Pair>\r\n"
+				+ "		<Pair>\r\n"
+				+ "			<key>highlight</key>\r\n"
+				+ "			<styleUrl>#failed02</styleUrl>\r\n"
+				+ "		</Pair>\r\n"
+				+ "	</StyleMap>\r\n"
+				+ "	<Style id=\"failed12\">\r\n"
+				+ "		<LineStyle>\r\n"
+				+ "			<color>ffff0000</color>\r\n"
+				+ "			<width>6</width>\r\n"
+				+ "		</LineStyle>\r\n"
+				+ "	</Style>\r\n"
+				+ "	<Style id=\"failed01\">\r\n"
+				+ "		<LineStyle>\r\n"
+				+ "			<width>6</width>\r\n"
+				+ "		</LineStyle>\r\n"
+				+ "	</Style>\r\n"
+				+ "	<Style id=\"failed10\">\r\n"
+				+ "		<LineStyle>\r\n"
+				+ "			<color>ff00ffaa</color>\r\n"
+				+ "			<width>6</width>\r\n"
+				+ "		</LineStyle>\r\n"
+				+ "	</Style>\r\n"
+				+ "	<Style id=\"failed00\">\r\n"
+				+ "		<LineStyle>\r\n"
+				+ "			<color>ff00ffaa</color>\r\n"
+				+ "			<width>6</width>\r\n"
+				+ "		</LineStyle>\r\n"
+				+ "	</Style>\r\n"
+				+ "	<StyleMap id=\"failed0\">\r\n"
+				+ "		<Pair>\r\n"
+				+ "			<key>normal</key>\r\n"
+				+ "			<styleUrl>#failed10</styleUrl>\r\n"
+				+ "		</Pair>\r\n"
+				+ "		<Pair>\r\n"
+				+ "			<key>highlight</key>\r\n"
+				+ "			<styleUrl>#failed00</styleUrl>\r\n"
+				+ "		</Pair>\r\n"
+				+ "	</StyleMap>\r\n"
+				+ "	<Style id=\"failed11\">\r\n"
+				+ "		<LineStyle>\r\n"
+				+ "			<width>6</width>\r\n"
+				+ "		</LineStyle>\r\n"
+				+ "	</Style>\r\n"
+				+ "	<Style id=\"failed02\">\r\n"
+				+ "		<LineStyle>\r\n"
+				+ "			<color>ffff0000</color>\r\n"
+				+ "			<width>6</width>\r\n"
+				+ "		</LineStyle>\r\n"
+				+ "	</Style>");
 	}
 
 	private void escribirEstiloCirculo(PrintWriter pw) {

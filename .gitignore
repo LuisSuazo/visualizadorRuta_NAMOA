@@ -4,3 +4,4 @@ KML_Output/
 bin/
 input/
 .classpath
+.vscode
