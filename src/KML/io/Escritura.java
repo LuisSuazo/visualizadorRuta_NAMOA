@@ -112,14 +112,14 @@ public class Escritura {
 		pw.println("\t\t" + "</Folder>\n");
 	}
 
-	public void nodosRiesgoKML(List<Circulo> puntosRiesgo) {
+	public void nodosRiesgoKML(List<Circulo> puntosRiesgo,String radio) {
 		File folder = new File("KML_Output");
 		FileWriter fichero = null;
 		try {
 			if (!folder.exists()) {
 				folder.mkdir();
 			}
-			fichero = new FileWriter("KML_Output/" + "NodosRiesgo" + ".kml"); /// Escribe el KML con el nombre de la
+			fichero = new FileWriter("KML_Output/" + "NodosRiesgo_"+radio + ".kml"); /// Escribe el KML con el nombre de la
 																				/// comuna
 			final PrintWriter pw = new PrintWriter(fichero);
 			pw.println("<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n"

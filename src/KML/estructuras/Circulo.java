@@ -8,12 +8,12 @@ public class Circulo {
 	private List<Nodo> puntos = new ArrayList<>();
 	private Nodo centro;
 	
-	public Circulo(Nodo centro) {
+	public Circulo(Nodo centro,Double radio) {
 		int[] a = new int[10];
 		a[1]=5;
 		double centerLat = (centro.getX()* Math.PI) / 180.0;  //rad
 		double centerLng = (centro.getY()* Math.PI) / 180.0; //rad        
-		double diameter = 1; // diameter of circle in km
+		double diameter = radio; // diameter of circle in km
 		double dist = diameter / 6371.0; 
 		double lan;
 		for (int x = 0; x <= 360; x += 1){

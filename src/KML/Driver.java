@@ -32,16 +32,19 @@ public class Driver {
 		Map<String,Calle> mapa=new HashMap<>();
 		Map<Integer,List<Nodo>> ruta=new HashMap<>();
 		Map<Integer,List<Nodo>> rutaRepresentativa=new HashMap<>();
-		List<Circulo> circulos = new ArrayList<>();
+		List<Circulo> radio800 = new ArrayList<>();
+		List<Circulo> radio1000 = new ArrayList<>();
 		List<Nodo> puntosRiesgo = new ArrayList<>();
 		lectura.leerCalles(calles,puntos,mapa);
 		lectura.leerRuta(puntos,ruta,true);
 		lectura.leerRuta(puntos,rutaRepresentativa,false);
-		lectura.leerPuntosRiesgo(puntosRiesgo,circulos);
+		lectura.leerPuntosRiesgo(puntosRiesgo,radio800,0.8);
+		lectura.leerPuntosRiesgo(puntosRiesgo,radio1000,1.0);
 		escribir.grafoKML(calles);
 		escribir.nodosKML(puntos);
-		//escribir.rutaKML(ruta,mapa,false,args[4]);
+		escribir.rutaKML(ruta,mapa,false,args[4]);
 		escribir.rutaKML(rutaRepresentativa,mapa,true,args[4]);
-		escribir.nodosRiesgoKML(circulos);
+		escribir.nodosRiesgoKML(radio800,"800");
+		escribir.nodosRiesgoKML(radio1000,"1000");
 	}
 }

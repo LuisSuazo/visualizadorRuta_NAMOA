@@ -86,7 +86,7 @@ public class Lectura {
 	
 	
 	
-	public void leerPuntosRiesgo(List<Nodo> puntosRiesgo,List<Circulo> circulos) throws IOException {
+	public void leerPuntosRiesgo(List<Nodo> puntosRiesgo,List<Circulo> circulos,Double radio) throws IOException {
 		CsvReader archivo = new CsvReader(this.puntosRiesgo);
 		archivo.setDelimiter( ';' );
 		archivo.readHeaders( );
@@ -94,7 +94,7 @@ public class Lectura {
 			double latLon[] = funciones.conv_gdc(Double.valueOf(archivo.get(3)),Double.valueOf(archivo.get(4)));
 			Nodo aux = new Nodo(archivo.get(0),archivo.get(2),latLon[0],latLon[1]);
 			puntosRiesgo.add(aux);
-			Circulo auxCirculo = new Circulo(aux);
+			Circulo auxCirculo = new Circulo(aux,radio);
 			circulos.add(auxCirculo);
 		}
 	}
