@@ -5,12 +5,12 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map.Entry;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import kml.estructuras.Calle;
 import kml.estructuras.Circulo;
 import kml.estructuras.Nodo;
@@ -18,6 +18,8 @@ import kml.estructuras.Nodo;
 import java.util.Random;
 
 public class Escritura {
+	
+	private static final Logger log = LoggerFactory.getLogger(Escritura.class);
 	
 	public void grafoKML(List<Calle> calles) {
 		File folder = new File("KML_Output");
@@ -217,7 +219,48 @@ public class Escritura {
 		}
 	}
 
-	public void rutaKML(Map<Integer, List<Nodo>> ruta, Map<String, Calle> mapa, boolean rr,String outname) {
+	public void escribirNodosCostos(Map<Integer,List<String>> costos,Map<Integer,List<Nodo>> ruta,Map<Integer,List<Calle>> arcos,String outname, boolean rr) {
+		File folder = new File("Costos_Output");
+		FileWriter fichero = null;
+		PrintWriter pw = null;
+		if (!folder.exists()) {
+			folder.mkdir();
+		}
+		String rname = "CostosRepresentativos_"+outname;
+		if (rr) {
+			rname = "Costos_"+outname;
+		}
+		try {
+			fichero = new FileWriter("Costos_Output/" + rname + ".csv");
+			pw = new PrintWriter(fichero);
+			for (Entry<Integer, List<String>> it : costos.entrySet()) {
+				for(int k = 0; k < it.getValue().size() ; ++k){
+					if(k == it.getValue().size() - 1){
+						pw.println(String.format("costo_%d;ruta;arco",k));
+					}else{
+						pw.print(String.format("num;costo_%d;",k));
+					}
+				}
+				break;
+			}
+			pw.flush();
+			for (Entry<Integer, List<String>> it : costos.entrySet()) {
+				pw.print(it.getKey()+";");
+				for(int k = 0; k < it.getValue().size() ; ++k){
+					pw.print(it.getValue().get(k)+";");
+				}
+				pw.print(ruta.get(it.getKey()).size()+";");
+				pw.println(arcos.get(it.getKey()).size());
+				pw.flush();
+			}
+			pw.close();
+			fichero.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void rutaKML(Map<Integer, List<Nodo>> ruta, Map<String, Calle> mapa, boolean rr,String outname,Map<Integer,List<Calle>> arcos) {
 		File folder = new File("KML_Output");
 		FileWriter fichero = null;
 
@@ -225,9 +268,9 @@ public class Escritura {
 		if (!folder.exists()) {
 			folder.mkdir();
 		}
-		String rname = "Rutas_"+outname;
+		String rname = "RutasRepresentativas_"+outname;
 		if (rr) {
-			rname = "RutasRepresentativas_"+outname;
+			rname = "Rutas_"+outname;
 		}
 		try {
 			fichero = new FileWriter("KML_Output/" + rname + ".kml"); /// Escribe el KML con el nombre de la comuna
@@ -260,6 +303,7 @@ public class Escritura {
 			for (Entry<Integer, List<Nodo>> it : ruta.entrySet()) {
 				String nombre = "";
 				pw.println("\t\t" + "<Folder>\n" + "\t\t\t" + "<name>" + it.getKey() + nombre + "</name>");
+				List<Calle> auxCalle = new ArrayList<>();
 				for (int i = 1; i < it.getValue().size(); ++i) {
 					String consultar = String
 							.valueOf(it.getValue().get(i - 1).getId() + "-" + it.getValue().get(i).getId());
@@ -285,8 +329,10 @@ public class Escritura {
 					pw.print("\t\t\t\t\t" + "</coordinates>\n");
 					pw.print("\t\t\t\t" + "</LineString>\n" + "\t\t\t" + "</Placemark>\n");
 					pw.flush();
+					auxCalle.add(aux);
 				}
 				pw.print("\t\t" + "</Folder>\n");
+				arcos.put(it.getKey(),auxCalle);
 			}
 			pw.print("\t\t" + "</Folder>\n");
 			pw.print("\t" + "</Document>\n" + "</kml>");

@@ -28,6 +28,7 @@
     <target name="clean">
         <delete dir="bin"/>
     	<delete dir="KML_Output"/>
+        <delete dir="Costos_Output"/>
     </target>
     <target depends="clean" name="cleanall"/>
     <target depends="build-subprojects,build-project" name="build"/>
@@ -39,6 +40,7 @@
             <classpath refid="kml.classpath"/>
         </javac>
     	<mkdir dir="KML_Output"/>
+        <mkdir dir="Costos_Output"/>
     </target>
     <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
     <target description="copy Eclipse compiler jars to ant lib directory" name="init-eclipse-compiler">
@@ -55,91 +57,171 @@
         <antcall target="build"/>
     </target>
     <target name="run">
-        <!--3O PAPER 1000 -->
+        <!--3O PAPER 1000-->
         <java classname="kml.Driver" failonerror="true" fork="yes">
-            <arg line="input/RedExpuesta_v2.csv input/3O/Paper/1000/Rutas_Bronfman_NAMOA_3O_P1000vsR1000vsTime_paper_S_21862_G_66521_nSOL_13314.csv input/3O/Paper/1000/Rutas_Bronfman_NAMOA_3O_P1000vsR1000vsTime_paper_S_21862_G_66521_nSOL_13314_Rutas_Representativas.csv input/PuntosRiesgos.csv Rutas_Bronfman_NAMOA_3O_P1000vsR1000vsTime_paper_S_21862_G_66521_nSOL_13314"/>
+            <arg line="input/RedExpuesta_v2.csv input/3O/Paper/1000/Rutas_Bronfman_NAMOA_3O_P1000vsR1000vsTime_paper_S_21862_G_66521_nSOL_13314.csv input/3O/Paper/1000/Rutas_Bronfman_NAMOA_3O_P1000vsR1000vsTime_paper_S_21862_G_66521_nSOL_13314_Rutas_Representativas.csv input/3O/Paper/1000/Costos_Bronfman_NAMOA_3O_P1000vsR1000vsTime_paper_S_21862_G_66521_nSOL_13314.csv input/3O/Paper/1000/Costos_Bronfman_NAMOA_3O_P1000vsR1000vsTime_paper_S_21862_G_66521_nSOL_13314_Valores_Representativas.csv input/PuntosRiesgos.csv Rutas_Bronfman_NAMOA_3O_P1000vsR1000vsTime_paper_S_21862_G_66521_nSOL_13314"/>
             <classpath refid="kml.classpath"/>
         </java>
         <java classname="kml.Driver" failonerror="true" fork="yes">
-            <arg line="input/RedExpuesta_v2.csv input/3O/Paper/1000/Rutas_Bronfman_NAMOA_3O_P1000vsR1000vsTime_paper_S_54602_G_23561_nSOL_5833.csv input/3O/Paper/1000/Rutas_Bronfman_NAMOA_3O_P1000vsR1000vsTime_paper_S_54602_G_23561_nSOL_5833_Rutas_Representativas.csv input/PuntosRiesgos.csv Rutas_Bronfman_NAMOA_3O_P1000vsR1000vsTime_paper_S_54602_G_23561_nSOL_5833"/>
+            <arg line="input/RedExpuesta_v2.csv input/3O/Paper/1000/Rutas_Bronfman_NAMOA_3O_P1000vsR1000vsTime_paper_S_54602_G_23561_nSOL_5833.csv input/3O/Paper/1000/Rutas_Bronfman_NAMOA_3O_P1000vsR1000vsTime_paper_S_54602_G_23561_nSOL_5833_Rutas_Representativas.csv input/3O/Paper/1000/Costos_Bronfman_NAMOA_3O_P1000vsR1000vsTime_paper_S_54602_G_23561_nSOL_5833.csv input/3O/Paper/1000/Costos_Bronfman_NAMOA_3O_P1000vsR1000vsTime_paper_S_54602_G_23561_nSOL_5833_Valores_Representativas.csv input/PuntosRiesgos.csv Rutas_Bronfman_NAMOA_3O_P1000vsR1000vsTime_paper_S_54602_G_23561_nSOL_5833"/>
             <classpath refid="kml.classpath"/>
         </java>
         <java classname="kml.Driver" failonerror="true" fork="yes">
-            <arg line="input/RedExpuesta_v2.csv input/3O/Paper/1000/Rutas_Bronfman_NAMOA_3O_P1000vsR1000vsTime_paper_S_65351_G_1000006_nSOL_3080.csv input/3O/Paper/1000/Rutas_Bronfman_NAMOA_3O_P1000vsR1000vsTime_paper_S_65351_G_1000006_nSOL_3080_Rutas_Representativas.csv input/PuntosRiesgos.csv Rutas_Bronfman_NAMOA_3O_P1000vsR1000vsTime_paper_S_65351_G_1000006_nSOL_3080"/>
+            <arg line="input/RedExpuesta_v2.csv input/3O/Paper/1000/Rutas_Bronfman_NAMOA_3O_P1000vsR1000vsTime_paper_S_65351_G_1000006_nSOL_3080.csv input/3O/Paper/1000/Rutas_Bronfman_NAMOA_3O_P1000vsR1000vsTime_paper_S_65351_G_1000006_nSOL_3080_Rutas_Representativas.csv input/3O/Paper/1000/Costos_Bronfman_NAMOA_3O_P1000vsR1000vsTime_paper_S_65351_G_1000006_nSOL_3080.csv input/3O/Paper/1000/Costos_Bronfman_NAMOA_3O_P1000vsR1000vsTime_paper_S_65351_G_1000006_nSOL_3080_Valores_Representativas.csv input/PuntosRiesgos.csv Rutas_Bronfman_NAMOA_3O_P1000vsR1000vsTime_paper_S_65351_G_1000006_nSOL_3080"/>
             <classpath refid="kml.classpath"/>
         </java>
         <java classname="kml.Driver" failonerror="true" fork="yes">
-            <arg line="input/RedExpuesta_v2.csv input/3O/Paper/1000/Rutas_Bronfman_NAMOA_3O_P1000vsR1000vsTime_paper_S_561634_G_62001_nSOL_2021.csv input/3O/Paper/1000/Rutas_Bronfman_NAMOA_3O_P1000vsR1000vsTime_paper_S_561634_G_62001_nSOL_2021_Rutas_Representativas.csv input/PuntosRiesgos.csv Rutas_Bronfman_NAMOA_3O_P1000vsR1000vsTime_paper_S_561634_G_62001_nSOL_2021"/>
+            <arg line="input/RedExpuesta_v2.csv input/3O/Paper/1000/Rutas_Bronfman_NAMOA_3O_P1000vsR1000vsTime_paper_S_561634_G_62001_nSOL_2021.csv input/3O/Paper/1000/Rutas_Bronfman_NAMOA_3O_P1000vsR1000vsTime_paper_S_561634_G_62001_nSOL_2021_Rutas_Representativas.csv input/3O/Paper/1000/Costos_Bronfman_NAMOA_3O_P1000vsR1000vsTime_paper_S_561634_G_62001_nSOL_2021.csv input/3O/Paper/1000/Costos_Bronfman_NAMOA_3O_P1000vsR1000vsTime_paper_S_561634_G_62001_nSOL_2021_Valores_Representativas.csv input/PuntosRiesgos.csv Rutas_Bronfman_NAMOA_3O_P1000vsR1000vsTime_paper_S_561634_G_62001_nSOL_2021"/>
             <classpath refid="kml.classpath"/>
         </java>
         <java classname="kml.Driver" failonerror="true" fork="yes">
-            <arg line="input/RedExpuesta_v2.csv input/3O/Paper/1000/Rutas_Bronfman_NAMOA_3O_P1000vsR1000vsTime_paper_S_860140_G_32731_nSOL_3828.csv input/3O/Paper/1000/Rutas_Bronfman_NAMOA_3O_P1000vsR1000vsTime_paper_S_860140_G_32731_nSOL_3828_Rutas_Representativas.csv input/PuntosRiesgos.csv Rutas_Bronfman_NAMOA_3O_P1000vsR1000vsTime_paper_S_860140_G_32731_nSOL_3828"/>
+            <arg line="input/RedExpuesta_v2.csv input/3O/Paper/1000/Rutas_Bronfman_NAMOA_3O_P1000vsR1000vsTime_paper_S_860140_G_32731_nSOL_3828.csv input/3O/Paper/1000/Rutas_Bronfman_NAMOA_3O_P1000vsR1000vsTime_paper_S_860140_G_32731_nSOL_3828_Rutas_Representativas.csv input/3O/Paper/1000/Costos_Bronfman_NAMOA_3O_P1000vsR1000vsTime_paper_S_860140_G_32731_nSOL_3828.csv input/3O/Paper/1000/Costos_Bronfman_NAMOA_3O_P1000vsR1000vsTime_paper_S_860140_G_32731_nSOL_3828_Valores_Representativas.csv input/PuntosRiesgos.csv Rutas_Bronfman_NAMOA_3O_P1000vsR1000vsTime_paper_S_860140_G_32731_nSOL_3828"/>
             <classpath refid="kml.classpath"/>
-        </java>
+        </java> 
         <!--3O PAPER 800 -->
         <java classname="kml.Driver" failonerror="true" fork="yes">
-            <arg line="input/RedExpuesta_v2.csv input/3O/Paper/800/Rutas_Bronfman_NAMOA_3O_P800vsR800vsTime_paper_S_21862_G_66521_nSOL_9341.csv input/3O/Paper/800/Rutas_Bronfman_NAMOA_3O_P800vsR800vsTime_paper_S_21862_G_66521_nSOL_9341_Rutas_Representativas.csv input/PuntosRiesgos.csv Rutas_Bronfman_NAMOA_3O_P800vsR800vsTime_paper_S_21862_G_66521_nSOL_9341"/>
+            <arg line="input/RedExpuesta_v2.csv input/3O/Paper/800/Rutas_Bronfman_NAMOA_3O_P800vsR800vsTime_paper_S_21862_G_66521_nSOL_9341.csv input/3O/Paper/800/Rutas_Bronfman_NAMOA_3O_P800vsR800vsTime_paper_S_21862_G_66521_nSOL_9341_Rutas_Representativas.csv input/3O/Paper/800/Costos_Bronfman_NAMOA_3O_P800vsR800vsTime_paper_S_21862_G_66521_nSOL_9341.csv input/3O/Paper/800/Costos_Bronfman_NAMOA_3O_P800vsR800vsTime_paper_S_21862_G_66521_nSOL_9341_Valores_Representativas.csv input/PuntosRiesgos.csv Rutas_Bronfman_NAMOA_3O_P800vsR800vsTime_paper_S_21862_G_66521_nSOL_9341"/>
             <classpath refid="kml.classpath"/>
         </java>
         <java classname="kml.Driver" failonerror="true" fork="yes">
-            <arg line="input/RedExpuesta_v2.csv input/3O/Paper/800/Rutas_Bronfman_NAMOA_3O_P800vsR800vsTime_paper_S_54602_G_23561_nSOL_5173.csv input/3O/Paper/800/Rutas_Bronfman_NAMOA_3O_P800vsR800vsTime_paper_S_54602_G_23561_nSOL_5173_Rutas_Representativas.csv input/PuntosRiesgos.csv Rutas_Bronfman_NAMOA_3O_P800vsR800vsTime_paper_S_54602_G_23561_nSOL_5173"/>
+            <arg line="input/RedExpuesta_v2.csv input/3O/Paper/800/Rutas_Bronfman_NAMOA_3O_P800vsR800vsTime_paper_S_54602_G_23561_nSOL_5173.csv input/3O/Paper/800/Rutas_Bronfman_NAMOA_3O_P800vsR800vsTime_paper_S_54602_G_23561_nSOL_5173_Rutas_Representativas.csv input/3O/Paper/800/Costos_Bronfman_NAMOA_3O_P800vsR800vsTime_paper_S_54602_G_23561_nSOL_5173.csv input/3O/Paper/800/Costos_Bronfman_NAMOA_3O_P800vsR800vsTime_paper_S_54602_G_23561_nSOL_5173_Valores_Representativas.csv input/PuntosRiesgos.csv Rutas_Bronfman_NAMOA_3O_P800vsR800vsTime_paper_S_54602_G_23561_nSOL_5173"/>
             <classpath refid="kml.classpath"/>
         </java>
         <java classname="kml.Driver" failonerror="true" fork="yes">
-            <arg line="input/RedExpuesta_v2.csv input/3O/Paper/800/Rutas_Bronfman_NAMOA_3O_P800vsR800vsTime_paper_S_65351_G_1000006_nSOL_1601.csv input/3O/Paper/800/Rutas_Bronfman_NAMOA_3O_P800vsR800vsTime_paper_S_65351_G_1000006_nSOL_1601_Rutas_Representativas.csv input/PuntosRiesgos.csv Rutas_Bronfman_NAMOA_3O_P800vsR800vsTime_paper_S_65351_G_1000006_nSOL_1601"/>
+            <arg line="input/RedExpuesta_v2.csv input/3O/Paper/800/Rutas_Bronfman_NAMOA_3O_P800vsR800vsTime_paper_S_65351_G_1000006_nSOL_1601.csv input/3O/Paper/800/Rutas_Bronfman_NAMOA_3O_P800vsR800vsTime_paper_S_65351_G_1000006_nSOL_1601_Rutas_Representativas.csv input/3O/Paper/800/Costos_Bronfman_NAMOA_3O_P800vsR800vsTime_paper_S_65351_G_1000006_nSOL_1601.csv input/3O/Paper/800/Costos_Bronfman_NAMOA_3O_P800vsR800vsTime_paper_S_65351_G_1000006_nSOL_1601_Valores_Representativas.csv input/PuntosRiesgos.csv Rutas_Bronfman_NAMOA_3O_P800vsR800vsTime_paper_S_65351_G_1000006_nSOL_1601"/>
             <classpath refid="kml.classpath"/>
         </java>
         <java classname="kml.Driver" failonerror="true" fork="yes">
-            <arg line="input/RedExpuesta_v2.csv input/3O/Paper/800/Rutas_Bronfman_NAMOA_3O_P800vsR800vsTime_paper_S_561634_G_62001_nSOL_1555.csv input/3O/Paper/800/Rutas_Bronfman_NAMOA_3O_P800vsR800vsTime_paper_S_561634_G_62001_nSOL_1555_Rutas_Representativas.csv input/PuntosRiesgos.csv Rutas_Bronfman_NAMOA_3O_P800vsR800vsTime_paper_S_561634_G_62001_nSOL_1555"/>
+            <arg line="input/RedExpuesta_v2.csv input/3O/Paper/800/Rutas_Bronfman_NAMOA_3O_P800vsR800vsTime_paper_S_561634_G_62001_nSOL_1555.csv input/3O/Paper/800/Rutas_Bronfman_NAMOA_3O_P800vsR800vsTime_paper_S_561634_G_62001_nSOL_1555_Rutas_Representativas.csv input/3O/Paper/800/Costos_Bronfman_NAMOA_3O_P800vsR800vsTime_paper_S_561634_G_62001_nSOL_1555.csv input/3O/Paper/800/Costos_Bronfman_NAMOA_3O_P800vsR800vsTime_paper_S_561634_G_62001_nSOL_1555_Valores_Representativas.csv input/PuntosRiesgos.csv Rutas_Bronfman_NAMOA_3O_P800vsR800vsTime_paper_S_561634_G_62001_nSOL_1555"/>
             <classpath refid="kml.classpath"/>
         </java>
         <java classname="kml.Driver" failonerror="true" fork="yes">
-            <arg line="input/RedExpuesta_v2.csv input/3O/Paper/800/Rutas_Bronfman_NAMOA_3O_P800vsR800vsTime_paper_S_860140_G_32731_nSOL_853.csv input/3O/Paper/800/Rutas_Bronfman_NAMOA_3O_P800vsR800vsTime_paper_S_860140_G_32731_nSOL_853_Rutas_Representativas.csv input/PuntosRiesgos.csv Rutas_Bronfman_NAMOA_3O_P800vsR800vsTime_paper_S_860140_G_32731_nSOL_853"/>
+            <arg line="input/RedExpuesta_v2.csv input/3O/Paper/800/Rutas_Bronfman_NAMOA_3O_P800vsR800vsTime_paper_S_860140_G_32731_nSOL_853.csv input/3O/Paper/800/Rutas_Bronfman_NAMOA_3O_P800vsR800vsTime_paper_S_860140_G_32731_nSOL_853_Rutas_Representativas.csv input/3O/Paper/800/Costos_Bronfman_NAMOA_3O_P800vsR800vsTime_paper_S_860140_G_32731_nSOL_853.csv input/3O/Paper/800/Costos_Bronfman_NAMOA_3O_P800vsR800vsTime_paper_S_860140_G_32731_nSOL_853_Valores_Representativas.csv input/PuntosRiesgos.csv Rutas_Bronfman_NAMOA_3O_P800vsR800vsTime_paper_S_860140_G_32731_nSOL_853"/>
             <classpath refid="kml.classpath"/>
         </java>
         <!--2O PAPER 800 -->
         <java classname="kml.Driver" failonerror="true" fork="yes">
-            <arg line="input/RedExpuesta_v2.csv input/2O/Paper/800/Rutas_Bronfman_NAMOA_2O_P800vsR800_paper_S_21862_G_66521_nSOL_236.csv input/2O/Paper/800/Rutas_Bronfman_NAMOA_2O_P800vsR800_paper_S_21862_G_66521_nSOL_236_Rutas_Representativas.csv input/PuntosRiesgos.csv Rutas_Bronfman_NAMOA_2O_P800vsR800_paper_S_21862_G_66521_nSOL_236"/>
+            <arg line="input/RedExpuesta_v2.csv input/2O/Paper/800/Rutas_Bronfman_NAMOA_2O_P800vsR800_paper_S_21862_G_66521_nSOL_236.csv input/2O/Paper/800/Rutas_Bronfman_NAMOA_2O_P800vsR800_paper_S_21862_G_66521_nSOL_236_Rutas_Representativas.csv input/2O/Paper/800/Costos_Bronfman_NAMOA_2O_P800vsR800_paper_S_21862_G_66521_nSOL_236.csv input/2O/Paper/800/Costos_Bronfman_NAMOA_2O_P800vsR800_paper_S_21862_G_66521_nSOL_236_Valores_Representativas.csv input/PuntosRiesgos.csv Rutas_Bronfman_NAMOA_2O_P800vsR800_paper_S_21862_G_66521_nSOL_236"/>
             <classpath refid="kml.classpath"/>
         </java>
         <java classname="kml.Driver" failonerror="true" fork="yes">
-            <arg line="input/RedExpuesta_v2.csv input/2O/Paper/800/Rutas_Bronfman_NAMOA_2O_P800vsR800_paper_S_54602_G_23561_nSOL_95.csv input/2O/Paper/800/Rutas_Bronfman_NAMOA_2O_P800vsR800_paper_S_54602_G_23561_nSOL_95_Rutas_Representativas.csv input/PuntosRiesgos.csv Rutas_Bronfman_NAMOA_2O_P800vsR800_paper_S_54602_G_23561_nSOL_95"/>
+            <arg line="input/RedExpuesta_v2.csv input/2O/Paper/800/Rutas_Bronfman_NAMOA_2O_P800vsR800_paper_S_54602_G_23561_nSOL_95.csv input/2O/Paper/800/Rutas_Bronfman_NAMOA_2O_P800vsR800_paper_S_54602_G_23561_nSOL_95_Rutas_Representativas.csv input/2O/Paper/800/Costos_Bronfman_NAMOA_2O_P800vsR800_paper_S_54602_G_23561_nSOL_95.csv input/2O/Paper/800/Costos_Bronfman_NAMOA_2O_P800vsR800_paper_S_54602_G_23561_nSOL_95_Valores_Representativas.csv input/PuntosRiesgos.csv Rutas_Bronfman_NAMOA_2O_P800vsR800_paper_S_54602_G_23561_nSOL_95"/>
             <classpath refid="kml.classpath"/>
         </java>
         <java classname="kml.Driver" failonerror="true" fork="yes">
-            <arg line="input/RedExpuesta_v2.csv input/2O/Paper/800/Rutas_Bronfman_NAMOA_2O_P800vsR800_paper_S_65351_G_1000006_nSOL_50.csv input/2O/Paper/800/Rutas_Bronfman_NAMOA_2O_P800vsR800_paper_S_65351_G_1000006_nSOL_50_Rutas_Representativas.csv input/PuntosRiesgos.csv Rutas_Bronfman_NAMOA_2O_P800vsR800_paper_S_65351_G_1000006_nSOL_50"/>
+            <arg line="input/RedExpuesta_v2.csv input/2O/Paper/800/Rutas_Bronfman_NAMOA_2O_P800vsR800_paper_S_65351_G_1000006_nSOL_50.csv input/2O/Paper/800/Rutas_Bronfman_NAMOA_2O_P800vsR800_paper_S_65351_G_1000006_nSOL_50_Rutas_Representativas.csv input/2O/Paper/800/Costos_Bronfman_NAMOA_2O_P800vsR800_paper_S_65351_G_1000006_nSOL_50.csv input/2O/Paper/800/Costos_Bronfman_NAMOA_2O_P800vsR800_paper_S_65351_G_1000006_nSOL_50_Valores_Representativas.csv input/PuntosRiesgos.csv Rutas_Bronfman_NAMOA_2O_P800vsR800_paper_S_65351_G_1000006_nSOL_50"/>
             <classpath refid="kml.classpath"/>
         </java>
         <java classname="kml.Driver" failonerror="true" fork="yes">
-            <arg line="input/RedExpuesta_v2.csv input/2O/Paper/800/Rutas_Bronfman_NAMOA_2O_P800vsR800_paper_S_561634_G_62001_nSOL_67.csv input/2O/Paper/800/Rutas_Bronfman_NAMOA_2O_P800vsR800_paper_S_561634_G_62001_nSOL_67_Rutas_Representativas.csv input/PuntosRiesgos.csv Rutas_Bronfman_NAMOA_2O_P800vsR800_paper_S_561634_G_62001_nSOL_67"/>
+            <arg line="input/RedExpuesta_v2.csv input/2O/Paper/800/Rutas_Bronfman_NAMOA_2O_P800vsR800_paper_S_561634_G_62001_nSOL_67.csv input/2O/Paper/800/Rutas_Bronfman_NAMOA_2O_P800vsR800_paper_S_561634_G_62001_nSOL_67_Rutas_Representativas.csv input/2O/Paper/800/Costos_Bronfman_NAMOA_2O_P800vsR800_paper_S_561634_G_62001_nSOL_67.csv input/2O/Paper/800/Costos_Bronfman_NAMOA_2O_P800vsR800_paper_S_561634_G_62001_nSOL_67_Valores_Representativas.csv input/PuntosRiesgos.csv Rutas_Bronfman_NAMOA_2O_P800vsR800_paper_S_561634_G_62001_nSOL_67"/>
             <classpath refid="kml.classpath"/>
         </java>
         <java classname="kml.Driver" failonerror="true" fork="yes">
-            <arg line="input/RedExpuesta_v2.csv input/2O/Paper/800/Rutas_Bronfman_NAMOA_2O_P800vsR800_paper_S_860140_G_32731_nSOL_60.csv input/2O/Paper/800/Rutas_Bronfman_NAMOA_2O_P800vsR800_paper_S_860140_G_32731_nSOL_60_Rutas_Representativas.csv input/PuntosRiesgos.csv Rutas_Bronfman_NAMOA_2O_P800vsR800_paper_S_860140_G_32731_nSOL_60"/>
+            <arg line="input/RedExpuesta_v2.csv input/2O/Paper/800/Rutas_Bronfman_NAMOA_2O_P800vsR800_paper_S_860140_G_32731_nSOL_60.csv input/2O/Paper/800/Rutas_Bronfman_NAMOA_2O_P800vsR800_paper_S_860140_G_32731_nSOL_60_Rutas_Representativas.csv input/2O/Paper/800/Costos_Bronfman_NAMOA_2O_P800vsR800_paper_S_860140_G_32731_nSOL_60.csv input/2O/Paper/800/Costos_Bronfman_NAMOA_2O_P800vsR800_paper_S_860140_G_32731_nSOL_60_Valores_Representativas.csv input/PuntosRiesgos.csv Rutas_Bronfman_NAMOA_2O_P800vsR800_paper_S_860140_G_32731_nSOL_60"/>
+            <classpath refid="kml.classpath"/>
+        </java>
+        <java classname="kml.Driver" failonerror="true" fork="yes">
+            <arg line="input/RedExpuesta_v2.csv input/2O/Paper/800/Rutas_Bronfman_NAMOA_2O_P800vsTime_paper_S_21862_G_66521_nSOL_42.csv input/2O/Paper/800/Rutas_Bronfman_NAMOA_2O_P800vsTime_paper_S_21862_G_66521_nSOL_42_Rutas_Representativas.csv input/2O/Paper/800/Costos_Bronfman_NAMOA_2O_P800vsTime_paper_S_21862_G_66521_nSOL_42.csv input/2O/Paper/800/Costos_Bronfman_NAMOA_2O_P800vsTime_paper_S_21862_G_66521_nSOL_42_Valores_Representativas.csv input/PuntosRiesgos.csv Rutas_Bronfman_NAMOA_2O_P800vsTime_paper_S_21862_G_66521_nSOL_42"/>
+            <classpath refid="kml.classpath"/>
+        </java>
+        <java classname="kml.Driver" failonerror="true" fork="yes">
+            <arg line="input/RedExpuesta_v2.csv input/2O/Paper/800/Rutas_Bronfman_NAMOA_2O_P800vsTime_paper_S_54602_G_23561_nSOL_16.csv input/2O/Paper/800/Rutas_Bronfman_NAMOA_2O_P800vsTime_paper_S_54602_G_23561_nSOL_16_Rutas_Representativas.csv input/2O/Paper/800/Costos_Bronfman_NAMOA_2O_P800vsTime_paper_S_54602_G_23561_nSOL_16.csv input/2O/Paper/800/Costos_Bronfman_NAMOA_2O_P800vsTime_paper_S_54602_G_23561_nSOL_16_Valores_Representativas.csv input/PuntosRiesgos.csv Rutas_Bronfman_NAMOA_2O_P800vsTime_paper_S_54602_G_23561_nSOL_16"/>
+            <classpath refid="kml.classpath"/>
+        </java>
+        <java classname="kml.Driver" failonerror="true" fork="yes">
+            <arg line="input/RedExpuesta_v2.csv input/2O/Paper/800/Rutas_Bronfman_NAMOA_2O_P800vsTime_paper_S_65351_G_1000006_nSOL_31.csv input/2O/Paper/800/Rutas_Bronfman_NAMOA_2O_P800vsTime_paper_S_65351_G_1000006_nSOL_31_Rutas_Representativas.csv input/2O/Paper/800/Costos_Bronfman_NAMOA_2O_P800vsTime_paper_S_65351_G_1000006_nSOL_31.csv input/2O/Paper/800/Costos_Bronfman_NAMOA_2O_P800vsTime_paper_S_65351_G_1000006_nSOL_31_Valores_Representativas.csv input/PuntosRiesgos.csv Rutas_Bronfman_NAMOA_2O_P800vsTime_paper_S_65351_G_1000006_nSOL_31"/>
+            <classpath refid="kml.classpath"/>
+        </java>
+        <java classname="kml.Driver" failonerror="true" fork="yes">
+            <arg line="input/RedExpuesta_v2.csv input/2O/Paper/800/Rutas_Bronfman_NAMOA_2O_P800vsTime_paper_S_561634_G_62001_nSOL_69.csv input/2O/Paper/800/Rutas_Bronfman_NAMOA_2O_P800vsTime_paper_S_561634_G_62001_nSOL_69_Rutas_Representativas.csv input/2O/Paper/800/Costos_Bronfman_NAMOA_2O_P800vsTime_paper_S_561634_G_62001_nSOL_69.csv input/2O/Paper/800/Costos_Bronfman_NAMOA_2O_P800vsTime_paper_S_561634_G_62001_nSOL_69_Valores_Representativas.csv input/PuntosRiesgos.csv Rutas_Bronfman_NAMOA_2O_P800vsTime_paper_S_561634_G_62001_nSOL_69"/>
+            <classpath refid="kml.classpath"/>
+        </java>
+        <java classname="kml.Driver" failonerror="true" fork="yes">
+            <arg line="input/RedExpuesta_v2.csv input/2O/Paper/800/Rutas_Bronfman_NAMOA_2O_P800vsTime_paper_S_860140_G_32731_nSOL_21.csv input/2O/Paper/800/Rutas_Bronfman_NAMOA_2O_P800vsTime_paper_S_860140_G_32731_nSOL_21_Rutas_Representativas.csv input/2O/Paper/800/Costos_Bronfman_NAMOA_2O_P800vsTime_paper_S_860140_G_32731_nSOL_21.csv input/2O/Paper/800/Costos_Bronfman_NAMOA_2O_P800vsTime_paper_S_860140_G_32731_nSOL_21_Valores_Representativas.csv input/PuntosRiesgos.csv Rutas_Bronfman_NAMOA_2O_P800vsTime_paper_S_860140_G_32731_nSOL_21"/>
+            <classpath refid="kml.classpath"/>
+        </java>
+        <java classname="kml.Driver" failonerror="true" fork="yes">
+            <arg line="input/RedExpuesta_v2.csv input/2O/Paper/800/Rutas_Bronfman_NAMOA_2O_R800vsTime_paper_S_21862_G_66521_nSOL_422.csv input/2O/Paper/800/Rutas_Bronfman_NAMOA_2O_R800vsTime_paper_S_21862_G_66521_nSOL_422_Rutas_Representativas.csv input/2O/Paper/800/Costos_Bronfman_NAMOA_2O_R800vsTime_paper_S_21862_G_66521_nSOL_422.csv input/2O/Paper/800/Costos_Bronfman_NAMOA_2O_R800vsTime_paper_S_21862_G_66521_nSOL_422_Valores_Representativas.csv input/PuntosRiesgos.csv Rutas_Bronfman_NAMOA_2O_R800vsTime_paper_S_21862_G_66521_nSOL_422"/>
+            <classpath refid="kml.classpath"/>
+        </java>
+        <java classname="kml.Driver" failonerror="true" fork="yes">
+            <arg line="input/RedExpuesta_v2.csv input/2O/Paper/800/Rutas_Bronfman_NAMOA_2O_R800vsTime_paper_S_54602_G_23561_nSOL_327.csv input/2O/Paper/800/Rutas_Bronfman_NAMOA_2O_R800vsTime_paper_S_54602_G_23561_nSOL_327_Rutas_Representativas.csv input/2O/Paper/800/Costos_Bronfman_NAMOA_2O_R800vsTime_paper_S_54602_G_23561_nSOL_327.csv input/2O/Paper/800/Costos_Bronfman_NAMOA_2O_R800vsTime_paper_S_54602_G_23561_nSOL_327_Valores_Representativas.csv input/PuntosRiesgos.csv Rutas_Bronfman_NAMOA_2O_R800vsTime_paper_S_54602_G_23561_nSOL_327"/>
+            <classpath refid="kml.classpath"/>
+        </java>
+        <java classname="kml.Driver" failonerror="true" fork="yes">
+            <arg line="input/RedExpuesta_v2.csv input/2O/Paper/800/Rutas_Bronfman_NAMOA_2O_R800vsTime_paper_S_65351_G_1000006_nSOL_117.csv input/2O/Paper/800/Rutas_Bronfman_NAMOA_2O_R800vsTime_paper_S_65351_G_1000006_nSOL_117_Rutas_Representativas.csv input/2O/Paper/800/Costos_Bronfman_NAMOA_2O_R800vsTime_paper_S_65351_G_1000006_nSOL_117.csv input/2O/Paper/800/Costos_Bronfman_NAMOA_2O_R800vsTime_paper_S_65351_G_1000006_nSOL_117_Valores_Representativas.csv input/PuntosRiesgos.csv Rutas_Bronfman_NAMOA_2O_R800vsTime_paper_S_65351_G_1000006_nSOL_117"/>
+            <classpath refid="kml.classpath"/>
+        </java>
+        <java classname="kml.Driver" failonerror="true" fork="yes">
+            <arg line="input/RedExpuesta_v2.csv input/2O/Paper/800/Rutas_Bronfman_NAMOA_2O_R800vsTime_paper_S_561634_G_62001_nSOL_65.csv input/2O/Paper/800/Rutas_Bronfman_NAMOA_2O_R800vsTime_paper_S_561634_G_62001_nSOL_65_Rutas_Representativas.csv input/2O/Paper/800/Costos_Bronfman_NAMOA_2O_R800vsTime_paper_S_561634_G_62001_nSOL_65.csv input/2O/Paper/800/Costos_Bronfman_NAMOA_2O_R800vsTime_paper_S_561634_G_62001_nSOL_65_Valores_Representativas.csv input/PuntosRiesgos.csv Rutas_Bronfman_NAMOA_2O_R800vsTime_paper_S_561634_G_62001_nSOL_65"/>
+            <classpath refid="kml.classpath"/>
+        </java>
+        <java classname="kml.Driver" failonerror="true" fork="yes">
+            <arg line="input/RedExpuesta_v2.csv input/2O/Paper/800/Rutas_Bronfman_NAMOA_2O_R800vsTime_paper_S_860140_G_32731_nSOL_51.csv input/2O/Paper/800/Rutas_Bronfman_NAMOA_2O_R800vsTime_paper_S_860140_G_32731_nSOL_51_Rutas_Representativas.csv input/2O/Paper/800/Costos_Bronfman_NAMOA_2O_R800vsTime_paper_S_860140_G_32731_nSOL_51.csv input/2O/Paper/800/Costos_Bronfman_NAMOA_2O_R800vsTime_paper_S_860140_G_32731_nSOL_51_Valores_Representativas.csv input/PuntosRiesgos.csv Rutas_Bronfman_NAMOA_2O_R800vsTime_paper_S_860140_G_32731_nSOL_51"/>
             <classpath refid="kml.classpath"/>
         </java>
         <!--2O PAPER 1000 -->
         <java classname="kml.Driver" failonerror="true" fork="yes">
-            <arg line="input/RedExpuesta_v2.csv input/2O/Paper/1000/Rutas_Bronfman_NAMOA_2O_P1000vsR1000_paper_S_21862_G_66521_nSOL_160.csv input/2O/Paper/1000/Rutas_Bronfman_NAMOA_2O_P1000vsR1000_paper_S_21862_G_66521_nSOL_160_Rutas_Representativas.csv input/PuntosRiesgos.csv Rutas_Bronfman_NAMOA_2O_P1000vsR1000_paper_S_21862_G_66521_nSOL_160"/>
+            <arg line="input/RedExpuesta_v2.csv input/2O/Paper/1000/Rutas_Bronfman_NAMOA_2O_P1000vsR1000_paper_S_21862_G_66521_nSOL_160.csv input/2O/Paper/1000/Rutas_Bronfman_NAMOA_2O_P1000vsR1000_paper_S_21862_G_66521_nSOL_160_Rutas_Representativas.csv input/2O/Paper/1000/Costos_Bronfman_NAMOA_2O_P1000vsR1000_paper_S_21862_G_66521_nSOL_160.csv input/2O/Paper/1000/Costos_Bronfman_NAMOA_2O_P1000vsR1000_paper_S_21862_G_66521_nSOL_160_Valores_Representativas.csv input/PuntosRiesgos.csv Rutas_Bronfman_NAMOA_2O_P1000vsR1000_paper_S_21862_G_66521_nSOL_160"/>
             <classpath refid="kml.classpath"/>
         </java>
         <java classname="kml.Driver" failonerror="true" fork="yes">
-            <arg line="input/RedExpuesta_v2.csv input/2O/Paper/1000/Rutas_Bronfman_NAMOA_2O_P1000vsR1000_paper_S_54602_G_23561_nSOL_137.csv input/2O/Paper/1000/Rutas_Bronfman_NAMOA_2O_P1000vsR1000_paper_S_54602_G_23561_nSOL_137_Rutas_Representativas.csv input/PuntosRiesgos.csv Rutas_Bronfman_NAMOA_2O_P1000vsR1000_paper_S_54602_G_23561_nSOL_137"/>
+            <arg line="input/RedExpuesta_v2.csv input/2O/Paper/1000/Rutas_Bronfman_NAMOA_2O_P1000vsR1000_paper_S_54602_G_23561_nSOL_137.csv input/2O/Paper/1000/Rutas_Bronfman_NAMOA_2O_P1000vsR1000_paper_S_54602_G_23561_nSOL_137_Rutas_Representativas.csv input/2O/Paper/1000/Costos_Bronfman_NAMOA_2O_P1000vsR1000_paper_S_54602_G_23561_nSOL_137.csv input/2O/Paper/1000/Costos_Bronfman_NAMOA_2O_P1000vsR1000_paper_S_54602_G_23561_nSOL_137_Valores_Representativas.csv input/PuntosRiesgos.csv Rutas_Bronfman_NAMOA_2O_P1000vsR1000_paper_S_54602_G_23561_nSOL_137"/>
             <classpath refid="kml.classpath"/>
         </java>
         <java classname="kml.Driver" failonerror="true" fork="yes">
-            <arg line="input/RedExpuesta_v2.csv input/2O/Paper/1000/Rutas_Bronfman_NAMOA_2O_P1000vsR1000_paper_S_65351_G_1000006_nSOL_34.csv input/2O/Paper/1000/Rutas_Bronfman_NAMOA_2O_P1000vsR1000_paper_S_65351_G_1000006_nSOL_34_Rutas_Representativas.csv input/PuntosRiesgos.csv Rutas_Bronfman_NAMOA_2O_P1000vsR1000_paper_S_65351_G_1000006_nSOL_34"/>
+            <arg line="input/RedExpuesta_v2.csv input/2O/Paper/1000/Rutas_Bronfman_NAMOA_2O_P1000vsR1000_paper_S_65351_G_1000006_nSOL_34.csv input/2O/Paper/1000/Rutas_Bronfman_NAMOA_2O_P1000vsR1000_paper_S_65351_G_1000006_nSOL_34_Rutas_Representativas.csv input/2O/Paper/1000/Costos_Bronfman_NAMOA_2O_P1000vsR1000_paper_S_65351_G_1000006_nSOL_34.csv input/2O/Paper/1000/Costos_Bronfman_NAMOA_2O_P1000vsR1000_paper_S_65351_G_1000006_nSOL_34_Valores_Representativas.csv input/PuntosRiesgos.csv Rutas_Bronfman_NAMOA_2O_P1000vsR1000_paper_S_65351_G_1000006_nSOL_34"/>
             <classpath refid="kml.classpath"/>
         </java>
         <java classname="kml.Driver" failonerror="true" fork="yes">
-            <arg line="input/RedExpuesta_v2.csv input/2O/Paper/1000/Rutas_Bronfman_NAMOA_2O_P1000vsR1000_paper_S_561634_G_62001_nSOL_81.csv input/2O/Paper/1000/Rutas_Bronfman_NAMOA_2O_P1000vsR1000_paper_S_561634_G_62001_nSOL_81_Rutas_Representativas.csv input/PuntosRiesgos.csv Rutas_Bronfman_NAMOA_2O_P1000vsR1000_paper_S_561634_G_62001_nSOL_81"/>
+            <arg line="input/RedExpuesta_v2.csv input/2O/Paper/1000/Rutas_Bronfman_NAMOA_2O_P1000vsR1000_paper_S_561634_G_62001_nSOL_81.csv input/2O/Paper/1000/Rutas_Bronfman_NAMOA_2O_P1000vsR1000_paper_S_561634_G_62001_nSOL_81_Rutas_Representativas.csv input/2O/Paper/1000/Costos_Bronfman_NAMOA_2O_P1000vsR1000_paper_S_561634_G_62001_nSOL_81.csv input/2O/Paper/1000/Costos_Bronfman_NAMOA_2O_P1000vsR1000_paper_S_561634_G_62001_nSOL_81_Valores_Representativas.csv input/PuntosRiesgos.csv Rutas_Bronfman_NAMOA_2O_P1000vsR1000_paper_S_561634_G_62001_nSOL_81"/>
             <classpath refid="kml.classpath"/>
         </java>
         <java classname="kml.Driver" failonerror="true" fork="yes">
-            <arg line="input/RedExpuesta_v2.csv input/2O/Paper/1000/Rutas_Bronfman_NAMOA_2O_P1000vsR1000_paper_S_860140_G_32731_nSOL_177.csv input/2O/Paper/1000/Rutas_Bronfman_NAMOA_2O_P1000vsR1000_paper_S_860140_G_32731_nSOL_177_Rutas_Representativas.csv input/PuntosRiesgos.csv Rutas_Bronfman_NAMOA_2O_P1000vsR1000_paper_S_860140_G_32731_nSOL_177"/>
+            <arg line="input/RedExpuesta_v2.csv input/2O/Paper/1000/Rutas_Bronfman_NAMOA_2O_P1000vsR1000_paper_S_860140_G_32731_nSOL_177.csv input/2O/Paper/1000/Rutas_Bronfman_NAMOA_2O_P1000vsR1000_paper_S_860140_G_32731_nSOL_177_Rutas_Representativas.csv input/2O/Paper/1000/Costos_Bronfman_NAMOA_2O_P1000vsR1000_paper_S_860140_G_32731_nSOL_177.csv input/2O/Paper/1000/Costos_Bronfman_NAMOA_2O_P1000vsR1000_paper_S_860140_G_32731_nSOL_177_Valores_Representativas.csv input/PuntosRiesgos.csv Rutas_Bronfman_NAMOA_2O_P1000vsR1000_paper_S_860140_G_32731_nSOL_177"/>
             <classpath refid="kml.classpath"/>
         </java>
-        <!--2O PROPIA 800 -->
+        <java classname="kml.Driver" failonerror="true" fork="yes">
+            <arg line="input/RedExpuesta_v2.csv input/2O/Paper/1000/Rutas_Bronfman_NAMOA_2O_P1000vsTime_paper_S_21862_G_66521_nSOL_61.csv input/2O/Paper/1000/Rutas_Bronfman_NAMOA_2O_P1000vsTime_paper_S_21862_G_66521_nSOL_61_Rutas_Representativas.csv input/2O/Paper/1000/Costos_Bronfman_NAMOA_2O_P1000vsTime_paper_S_21862_G_66521_nSOL_61.csv input/2O/Paper/1000/Costos_Bronfman_NAMOA_2O_P1000vsTime_paper_S_21862_G_66521_nSOL_61_Valores_Representativas.csv input/PuntosRiesgos.csv Rutas_Bronfman_NAMOA_2O_P1000vsTime_paper_S_21862_G_66521_nSOL_61"/>
+            <classpath refid="kml.classpath"/>
+        </java>
+        <java classname="kml.Driver" failonerror="true" fork="yes">
+            <arg line="input/RedExpuesta_v2.csv input/2O/Paper/1000/Rutas_Bronfman_NAMOA_2O_P1000vsTime_paper_S_54602_G_23561_nSOL_31.csv input/2O/Paper/1000/Rutas_Bronfman_NAMOA_2O_P1000vsTime_paper_S_54602_G_23561_nSOL_31_Rutas_Representativas.csv input/2O/Paper/1000/Costos_Bronfman_NAMOA_2O_P1000vsTime_paper_S_54602_G_23561_nSOL_31.csv input/2O/Paper/1000/Costos_Bronfman_NAMOA_2O_P1000vsTime_paper_S_54602_G_23561_nSOL_31_Valores_Representativas.csv input/PuntosRiesgos.csv Rutas_Bronfman_NAMOA_2O_P1000vsTime_paper_S_54602_G_23561_nSOL_31"/>
+            <classpath refid="kml.classpath"/>
+        </java>
+        <java classname="kml.Driver" failonerror="true" fork="yes">
+            <arg line="input/RedExpuesta_v2.csv input/2O/Paper/1000/Rutas_Bronfman_NAMOA_2O_P1000vsTime_paper_S_65351_G_1000006_nSOL_28.csv input/2O/Paper/1000/Rutas_Bronfman_NAMOA_2O_P1000vsTime_paper_S_65351_G_1000006_nSOL_28_Rutas_Representativas.csv input/2O/Paper/1000/Costos_Bronfman_NAMOA_2O_P1000vsTime_paper_S_65351_G_1000006_nSOL_28.csv input/2O/Paper/1000/Costos_Bronfman_NAMOA_2O_P1000vsTime_paper_S_65351_G_1000006_nSOL_28_Valores_Representativas.csv input/PuntosRiesgos.csv Rutas_Bronfman_NAMOA_2O_P1000vsTime_paper_S_65351_G_1000006_nSOL_28"/>
+            <classpath refid="kml.classpath"/>
+        </java>
+        <java classname="kml.Driver" failonerror="true" fork="yes">
+            <arg line="input/RedExpuesta_v2.csv input/2O/Paper/1000/Rutas_Bronfman_NAMOA_2O_P1000vsTime_paper_S_561634_G_62001_nSOL_73.csv input/2O/Paper/1000/Rutas_Bronfman_NAMOA_2O_P1000vsTime_paper_S_561634_G_62001_nSOL_73_Rutas_Representativas.csv input/2O/Paper/1000/Costos_Bronfman_NAMOA_2O_P1000vsTime_paper_S_561634_G_62001_nSOL_73.csv input/2O/Paper/1000/Costos_Bronfman_NAMOA_2O_P1000vsTime_paper_S_561634_G_62001_nSOL_73_Valores_Representativas.csv input/PuntosRiesgos.csv Rutas_Bronfman_NAMOA_2O_P1000vsTime_paper_S_561634_G_62001_nSOL_73"/>
+            <classpath refid="kml.classpath"/>
+        </java>
+        <java classname="kml.Driver" failonerror="true" fork="yes">
+            <arg line="input/RedExpuesta_v2.csv input/2O/Paper/1000/Rutas_Bronfman_NAMOA_2O_P1000vsTime_paper_S_860140_G_32731_nSOL_20.csv input/2O/Paper/1000/Rutas_Bronfman_NAMOA_2O_P1000vsTime_paper_S_860140_G_32731_nSOL_20_Rutas_Representativas.csv input/2O/Paper/1000/Costos_Bronfman_NAMOA_2O_P1000vsTime_paper_S_860140_G_32731_nSOL_20.csv input/2O/Paper/1000/Costos_Bronfman_NAMOA_2O_P1000vsTime_paper_S_860140_G_32731_nSOL_20_Valores_Representativas.csv input/PuntosRiesgos.csv Rutas_Bronfman_NAMOA_2O_P1000vsTime_paper_S_860140_G_32731_nSOL_20"/>
+            <classpath refid="kml.classpath"/>
+        </java>
+        <java classname="kml.Driver" failonerror="true" fork="yes">
+            <arg line="input/RedExpuesta_v2.csv input/2O/Paper/1000/Rutas_Bronfman_NAMOA_2O_R1000vsTime_paper_S_21862_G_66521_nSOL_653.csv input/2O/Paper/1000/Rutas_Bronfman_NAMOA_2O_R1000vsTime_paper_S_21862_G_66521_nSOL_653_Rutas_Representativas.csv input/2O/Paper/1000/Costos_Bronfman_NAMOA_2O_R1000vsTime_paper_S_21862_G_66521_nSOL_653.csv input/2O/Paper/1000/Costos_Bronfman_NAMOA_2O_R1000vsTime_paper_S_21862_G_66521_nSOL_653_Valores_Representativas.csv input/PuntosRiesgos.csv Rutas_Bronfman_NAMOA_2O_R1000vsTime_paper_S_21862_G_66521_nSOL_653"/>
+            <classpath refid="kml.classpath"/>
+        </java>
+        <java classname="kml.Driver" failonerror="true" fork="yes">
+            <arg line="input/RedExpuesta_v2.csv input/2O/Paper/1000/Rutas_Bronfman_NAMOA_2O_R1000vsTime_paper_S_54602_G_23561_nSOL_128.csv input/2O/Paper/1000/Rutas_Bronfman_NAMOA_2O_R1000vsTime_paper_S_54602_G_23561_nSOL_128_Rutas_Representativas.csv input/2O/Paper/1000/Costos_Bronfman_NAMOA_2O_R1000vsTime_paper_S_54602_G_23561_nSOL_128.csv input/2O/Paper/1000/Costos_Bronfman_NAMOA_2O_R1000vsTime_paper_S_54602_G_23561_nSOL_128_Valores_Representativas.csv input/PuntosRiesgos.csv Rutas_Bronfman_NAMOA_2O_R1000vsTime_paper_S_54602_G_23561_nSOL_128"/>
+            <classpath refid="kml.classpath"/>
+        </java>
+        <java classname="kml.Driver" failonerror="true" fork="yes">
+            <arg line="input/RedExpuesta_v2.csv input/2O/Paper/1000/Rutas_Bronfman_NAMOA_2O_R1000vsTime_paper_S_65351_G_1000006_nSOL_302.csv input/2O/Paper/1000/Rutas_Bronfman_NAMOA_2O_R1000vsTime_paper_S_65351_G_1000006_nSOL_302_Rutas_Representativas.csv input/2O/Paper/1000/Costos_Bronfman_NAMOA_2O_R1000vsTime_paper_S_65351_G_1000006_nSOL_302.csv input/2O/Paper/1000/Costos_Bronfman_NAMOA_2O_R1000vsTime_paper_S_65351_G_1000006_nSOL_302_Valores_Representativas.csv input/PuntosRiesgos.csv Rutas_Bronfman_NAMOA_2O_R1000vsTime_paper_S_65351_G_1000006_nSOL_302"/>
+            <classpath refid="kml.classpath"/>
+        </java>
+        <java classname="kml.Driver" failonerror="true" fork="yes">
+            <arg line="input/RedExpuesta_v2.csv input/2O/Paper/1000/Rutas_Bronfman_NAMOA_2O_R1000vsTime_paper_S_561634_G_62001_nSOL_80.csv input/2O/Paper/1000/Rutas_Bronfman_NAMOA_2O_R1000vsTime_paper_S_561634_G_62001_nSOL_80_Rutas_Representativas.csv input/2O/Paper/1000/Costos_Bronfman_NAMOA_2O_R1000vsTime_paper_S_561634_G_62001_nSOL_80.csv input/2O/Paper/1000/Costos_Bronfman_NAMOA_2O_R1000vsTime_paper_S_561634_G_62001_nSOL_80_Valores_Representativas.csv input/PuntosRiesgos.csv Rutas_Bronfman_NAMOA_2O_R1000vsTime_paper_S_561634_G_62001_nSOL_80"/>
+            <classpath refid="kml.classpath"/>
+        </java>
+        <java classname="kml.Driver" failonerror="true" fork="yes">
+            <arg line="input/RedExpuesta_v2.csv input/2O/Paper/1000/Rutas_Bronfman_NAMOA_2O_R1000vsTime_paper_S_860140_G_32731_nSOL_170.csv input/2O/Paper/1000/Rutas_Bronfman_NAMOA_2O_R1000vsTime_paper_S_860140_G_32731_nSOL_170_Rutas_Representativas.csv input/2O/Paper/1000/Costos_Bronfman_NAMOA_2O_R1000vsTime_paper_S_860140_G_32731_nSOL_170.csv input/2O/Paper/1000/Costos_Bronfman_NAMOA_2O_R1000vsTime_paper_S_860140_G_32731_nSOL_170_Valores_Representativas.csv input/PuntosRiesgos.csv Rutas_Bronfman_NAMOA_2O_R1000vsTime_paper_S_860140_G_32731_nSOL_170"/>
+            <classpath refid="kml.classpath"/>
+        </java>
+        <!--2O PROPIA 800 
         <java classname="kml.Driver" failonerror="true" fork="yes">
             <arg line="input/RedExpuesta_v2.csv input/2O/Propia/800/Rutas_Bronfman_NAMOA_2O_P800vsR800_propia_S_13661_G_65081_nSOL_277.csv input/2O/Propia/800/Rutas_Bronfman_NAMOA_2O_P800vsR800_propia_S_13661_G_65081_nSOL_277_Rutas_Representativas.csv input/PuntosRiesgos.csv Rutas_Bronfman_NAMOA_2O_P800vsR800_propia_S_13661_G_65081_nSOL_277"/>
             <classpath refid="kml.classpath"/>
@@ -159,8 +241,8 @@
         <java classname="kml.Driver" failonerror="true" fork="yes">
             <arg line="input/RedExpuesta_v2.csv input/2O/Propia/800/Rutas_Bronfman_NAMOA_2O_P800vsR800_propia_S_561563_G_561585_nSOL_201.csv input/2O/Propia/800/Rutas_Bronfman_NAMOA_2O_P800vsR800_propia_S_561563_G_561585_nSOL_201_Rutas_Representativas.csv input/PuntosRiesgos.csv Rutas_Bronfman_NAMOA_2O_P800vsR800_propia_S_561563_G_561585_nSOL_201"/>
             <classpath refid="kml.classpath"/>
-        </java>
-        <!--2O PROPIA 1000 -->
+        </java> -->
+        <!--2O PROPIA 1000 
         <java classname="kml.Driver" failonerror="true" fork="yes">
             <arg line="input/RedExpuesta_v2.csv input/2O/Propia/1000/Rutas_Bronfman_NAMOA_2O_P1000vsR1000_propia_S_13661_G_65081_nSOL_151.csv input/2O/Propia/1000/Rutas_Bronfman_NAMOA_2O_P1000vsR1000_propia_S_13661_G_65081_nSOL_151_Rutas_Representativas.csv input/PuntosRiesgos.csv Rutas_Bronfman_NAMOA_2O_P1000vsR1000_propia_S_13661_G_65081_nSOL_151"/>
             <classpath refid="kml.classpath"/>
@@ -180,8 +262,8 @@
         <java classname="kml.Driver" failonerror="true" fork="yes">
             <arg line="input/RedExpuesta_v2.csv input/2O/Propia/1000/Rutas_Bronfman_NAMOA_2O_P1000vsR1000_propia_S_561563_G_561585_nSOL_115.csv input/2O/Propia/1000/Rutas_Bronfman_NAMOA_2O_P1000vsR1000_propia_S_561563_G_561585_nSOL_115_Rutas_Representativas.csv input/PuntosRiesgos.csv Rutas_Bronfman_NAMOA_2O_P1000vsR1000_propia_S_561563_G_561585_nSOL_115"/>
             <classpath refid="kml.classpath"/>
-        </java>
-        <!--3O PROPIA 800 -->
+        </java> -->
+        <!--3O PROPIA 800 
         <java classname="kml.Driver" failonerror="true" fork="yes">
             <arg line="input/RedExpuesta_v2.csv input/3O/Propia/800/Rutas_Bronfman_NAMOA_3O_P800vsR800vsTime_propia_S_13661_G_65081_nSOL_15269.csv input/3O/Propia/800/Rutas_Bronfman_NAMOA_3O_P800vsR800vsTime_propia_S_13661_G_65081_nSOL_15269_Rutas_Representativas.csv input/PuntosRiesgos.csv Rutas_Bronfman_NAMOA_3O_P800vsR800vsTime_propia_S_13661_G_65081_nSOL_15269"/>
             <classpath refid="kml.classpath"/>
@@ -201,8 +283,8 @@
         <java classname="kml.Driver" failonerror="true" fork="yes">
             <arg line="input/RedExpuesta_v2.csv input/3O/Propia/800/Rutas_Bronfman_NAMOA_3O_P800vsR800vsTime_propia_S_561563_G_561585_nSOL_6921.csv input/3O/Propia/800/Rutas_Bronfman_NAMOA_3O_P800vsR800vsTime_propia_S_561563_G_561585_nSOL_6921_Rutas_Representativas.csv input/PuntosRiesgos.csv Rutas_Bronfman_NAMOA_3O_P800vsR800vsTime_propia_S_561563_G_561585_nSOL_6921"/>
             <classpath refid="kml.classpath"/>
-        </java>
-        <!--3O PROPIA 1000 -->
+        </java> -->
+        <!--3O PROPIA 1000 
         <java classname="kml.Driver" failonerror="true" fork="yes">
             <arg line="input/RedExpuesta_v2.csv input/3O/Propia/1000/Rutas_Bronfman_NAMOA_3O_P1000vsR1000vsTime_propia_S_13661_G_65081_nSOL_17479.csv input/3O/Propia/1000/Rutas_Bronfman_NAMOA_3O_P1000vsR1000vsTime_propia_S_13661_G_65081_nSOL_17479_Rutas_Representativas.csv input/PuntosRiesgos.csv Rutas_Bronfman_NAMOA_3O_P1000vsR1000vsTime_propia_S_13661_G_65081_nSOL_17479"/>
             <classpath refid="kml.classpath"/>
@@ -222,6 +304,6 @@
         <java classname="kml.Driver" failonerror="true" fork="yes">
             <arg line="input/RedExpuesta_v2.csv input/3O/Propia/1000/Rutas_Bronfman_NAMOA_3O_P1000vsR1000vsTime_propia_S_561563_G_561585_nSOL_1301.csv input/3O/Propia/1000/Rutas_Bronfman_NAMOA_3O_P1000vsR1000vsTime_propia_S_561563_G_561585_nSOL_1301_Rutas_Representativas.csv input/PuntosRiesgos.csv Rutas_Bronfman_NAMOA_3O_P1000vsR1000vsTime_propia_S_561563_G_561585_nSOL_1301"/>
             <classpath refid="kml.classpath"/>
-        </java>
+        </java>-->
     </target>
 </project>

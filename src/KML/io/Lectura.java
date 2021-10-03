@@ -5,7 +5,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.csvreader.CsvReader;
 
@@ -16,18 +17,24 @@ import kml.funciones.Funciones;
 
 public class Lectura {
 	
+	private static final Logger log = LoggerFactory.getLogger(Lectura.class);
+
 	Funciones funciones = new Funciones();
 	
 	private String redExpuesta;
 	private String rutas;
 	private String rutasRepresentativas;
 	private String puntosRiesgo;
+	private String archivoCosto;
+	private String archivoCostoRepresentativo;
 	
-	public Lectura(String redExpuesta, String rutas, String rutasRepresentativas, String puntosRiesgo) {
+	public Lectura(String redExpuesta, String rutas, String rutasRepresentativas,String archivoCosto,String archivoCostoRepresentativo, String puntosRiesgo) {
 		this.redExpuesta = redExpuesta;
 		this.rutas = rutas;
 		this.rutasRepresentativas = rutasRepresentativas;
 		this.puntosRiesgo = puntosRiesgo;
+		this.archivoCosto = archivoCosto;
+		this.archivoCostoRepresentativo = archivoCostoRepresentativo;
 	}
 	
 	public void leerCalles(List<Calle> calles,Map<Integer,Nodo> puntos,Map<String,Calle> mapa) throws FileNotFoundException, IOException{
@@ -62,7 +69,7 @@ public class Lectura {
 			puntos.put(nodoB,new Nodo(nodoB,latLonB[0],latLonB[1]));
 			
 		}
-		
+		archivo.close();
 	}
 
 	public void leerRuta(Map<Integer,Nodo> puntos,Map<Integer,List<Nodo>> ruta,boolean rr) throws FileNotFoundException, IOException{
@@ -82,8 +89,29 @@ public class Lectura {
 			ruta.put(cont,aux);
 			cont++;
 		}
+		archivo.close();
 	}
-	
+
+	public void leerCostos(Map<Integer,List<String>> costos,boolean rr) throws FileNotFoundException, IOException{
+		CsvReader archivo = null;
+		if(rr) {
+			archivo = new CsvReader(this.archivoCosto);
+		}else {
+			archivo = new CsvReader(this.archivoCostoRepresentativo);
+		}
+		archivo.setDelimiter( ';' );
+		int cont=0;
+		archivo.readHeaders();
+		while( archivo.readRecord( ) ){
+			List<String> aux=new ArrayList<>();
+			for(String it: archivo.getValues()) {
+				aux.add(it.replace(".", ","));
+			}
+			costos.put(cont,aux);
+			cont++;
+		}
+		archivo.close();
+	}
 	
 	
 	public void leerPuntosRiesgo(List<Nodo> puntosRiesgo,List<Circulo> circulos,Double radio) throws IOException {
@@ -97,5 +125,25 @@ public class Lectura {
 			Circulo auxCirculo = new Circulo(aux,radio);
 			circulos.add(auxCirculo);
 		}
+		archivo.close();
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	
+	@Override
+	public String toString() {
+		return "Lectura [" + (archivoCosto != null ? "archivoCosto=" + archivoCosto + ", " : "")
+				+ (archivoCostoRepresentativo != null
+						? "archivoCostoRepresentativo=" + archivoCostoRepresentativo + ", "
+						: "")
+				+ (funciones != null ? "funciones=" + funciones + ", " : "")
+				+ (puntosRiesgo != null ? "puntosRiesgo=" + puntosRiesgo + ", " : "")
+				+ (redExpuesta != null ? "redExpuesta=" + redExpuesta + ", " : "")
+				+ (rutas != null ? "rutas=" + rutas + ", " : "")
+				+ (rutasRepresentativas != null ? "rutasRepresentativas=" + rutasRepresentativas : "") + "]";
+	}
+
+	
 }
